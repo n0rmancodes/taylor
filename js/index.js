@@ -35,7 +35,7 @@ function download() {
 		var JSONData = JSON.parse(http.responseText);
 		var vidTitle = JSONData.items[0].snippet.title;
 		var vidAuthor = JSONData.items[0].snippet.channelTitle;
-		var vidThumb = JSONData.items[0].snippet.thumbnails.maxres.url;
+		if (!JSONData.items[0].snippet.thumbnails.maxres.url) {var vidThumb = JSONData.items[0].snippet.thumbnails.standard.url} else {var vidThumb = var vidThumb = JSONData.items[0].snippet.thumbnails.maxres.url}
 		document.getElementById("deets").innerHTML = "writing to HTML file...";
 		document.getElementById("vidTitle").innerHTML = vidTitle;
 		document.getElementById("vidAuthor").innerHTML = vidAuthor;
