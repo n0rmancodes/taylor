@@ -13,13 +13,17 @@ button {
 }
 
 h1 {
-	font-family: Gugi;
 	font-size: 90px;
+	font-family:arial;
 	background-image: linear-gradient(to right, #5DED89, #00D7C7);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	margin: 0;
 	padding: 0;
+	-webkit-transition: font-size .5s; /* Safari prior 6.1 */
+	width:275px;
+	height:115px;
+	transition: font-size .5s;
 }
 
 input {
@@ -49,6 +53,11 @@ a:visited {
 label {
 	font-family:Arial;
 	color:white;
+}
+
+video {
+	width:800px;
+	height:450px;
 }
 
 #download {

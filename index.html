@@ -6,29 +6,29 @@
 		<meta name="author" content="n0rmancodes">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="bower_components/css-ripple-effect/dist/ripple.min.css">
 		<link rel="shortcut icon" href="ico/favicon.ico"/>
 		<meta charset="UTF-8" />
 	</head>
 	<body id="body">
 		<center>
 			<div id="header">
-				<h1 id="title" style="font-family:Arial;"><span id="oogaBooga" onmouseover="boldIt()" onmouseout="noBold()">taylor</h1></span>
+				<h1 id="title" style="font-family:Arial;" onmouseover="boldIt()" onmouseout="noBold()">taylor</h1>
 				<p id="welcome">taylor is a high-quality, simple, ad-free youtube downloader.</p>
 				<p id="wel_txt"><a href="#" onclick="document.getElementById('settings').style.display = 'block';">settings</a> | <a href="#" onclick="legal()">legal</a></p>
-				<input id="input_text" autocomplete="off" placeholder="put in stuff"></input><button href="#" id="download" onclick="download()">download</button><button id="search" href="#" onclick="search()">search</button>
+				<input id="input_text" autocomplete="off" placeholder="put in stuff"></input><button href="#" id="download" onclick="download()">download</button><button id="search" href="#" class="ripple" onclick="search()">search</button>
 			</div>	
 			<div id="loading">
 				<div id="ajaxloader"></div>
 				<p id="deets"></p>
-				<button id="cancel-btn" onclick="location.reload();" href="#">cancel</button>
-				<div id="vidMeta" style="display:none;">
-					<p><strong><span id="vidTitle">[Video Name]</span></strong> by <strong><span id="vidAuthor">[Video Creator]</span></strong></p>
-					<img id="vidThumb" src="ico/placeholder.jpg">
-				</div>
+				<button id="cancel-btn" class="ripple" onclick="location.reload();" href="#">cancel</button>
 			</div>
 			<div id="downloadInfo" style="display:none;">
-				<video id="downloadPreview" width="300" controls autoplay></video>
-				<p id="downloadDeets"></p>
+				<video id="downloadPreview" controls>
+					<source id="videoSrc_mp4" type="video\mp4">
+					<source id="videoSrc_webm" type="video\webm">
+				</video>
+				<p id="downloadDeets" > <span class="material-icons">file_download</span> <b>download successful</b> | quality: <b><span id="vidQuality"></span></b> | file type: <span id="vidType"><b></b></span> | <b><a id="vidDL" download>download</a></b></p>
 			</div>
 			<div id="error">
 				<div style="height:5px;"></div>
@@ -49,11 +49,11 @@
 				<i class="material-icons" style="color:white;">settings</i>
 				<p>Taylor saves your settings in your browser's cookies!</p>
 				<div style="height:3px;"></div>
-				<label>Language: </label><select id="lang"><option value="en">English</option></select><br>
-				<label>Theme: </label><select id="theme"><option value="T1">Default (Dark)</option><option value="T2">Light</option></select>
+				<label>Language: </label><select id="lang"><option value="en">English</option><option value="es">Spanish (BTEA)</option></select><br>
+				<label>Theme: </label><select id="theme"><option value="T1">Default (Dark)</option><option value="T2">Light</option></select><br>
 				<label>Music: </label><select id="yahoo?"><option value="n">No</option><option value="y">Yes</option></select>
 				<div style="height:5px;"></div>
-				<button onclick="save()">save</button>
+				<button onclick="save()" class="ripple">save</button>
 				<div style="height:5px;"></div>
 			</div>
 			<div id="player" style="display:none;"></div>
