@@ -18,42 +18,19 @@ function download() {
 	if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = "comprobando enlace..."}
 	document.getElementById("loading").style.display = "block"
 	document.getElementById("input_text").disabled = true;
-	if(!document.getElementById("input_text").value.includes("https://youtu")) {
-		if(!document.getElementById("input_text").value.includes("https://www.youtu")){
+	var ytLink = document.getElementById("input_text").value
+	if(!ytLink.includes("https://youtu")) {
+		if(!ytLink.includes("https://www.youtu")){
 			nomatch()
 			return;
 		}
 	}
-	document.getElementById("deets").innerHTML = "encontrando ID de video..."; 
-	if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = ""}
-	if (document.getElementById("input_text").value.includes("https://youtube.com/watch?v=")) {
-		var yID = document.getElementById("input_text").value.substring(28, 39);
+	if (ytLink.includes("https://youtu.be/")) {
+		var yID = document.getElementById("input_text").value.substring(17,28);
+		var ytLink = "https://youtube.com/watch?v=" + yID;
 	}
-	if (document.getElementById("input_text").value.includes("https://www.youtube.com/watch?v=")) {
-		var yID = document.getElementById("input_text").value.substring(32, 43);
-	}
-	if (!yID) {
-		noMeta();
-		return;
-	}
-	document.getElementById("deets").innerHTML = "receiving video metadata..."; 
-	if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = "recibiendo metadatos de video..."}
 	const http = new XMLHttpRequest();
-	const mURL = "https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAT-yaK5XzJw8Q9njDrJgxwPdXSA4binAc&part=snippet&id=" + yID;
-	http.open("GET", mURL);
-	http.send();
-	http.onreadystatechange=(e)=>{
-		var JSONData = JSON.parse(http.responseText);
-		var vidTitle = JSONData.items[0].snippet.title;
-		var vidAuthor = JSONData.items[0].snippet.channelTitle;
-		var vidThumb = JSONData.items[0].snippet.thumbnails.standard.url;
-		if (JSONData.items[0].snippet.thumbnails.standard.url) {var vidThumb = JSONData.items[0].snippet.thumbnails.high.url}
-		document.getElementById("deets").innerHTML = "writing to HTML file...";
-		document.getElementById("vidTitle").innerHTML = vidTitle;
-		document.getElementById("vidAuthor").innerHTML = vidAuthor;
-		document.getElementById("downloadPreview").poster = vidThumb;
-	}
-	const dUrl = "https://you-link-revived.herokuapp.com/?url=" + document.getElementById("input_text").value;
+	const dUrl = "https://you-link-revived.herokuapp.com/?url=" + ytLink;
 	document.getElementById("deets").innerHTML = "getting download link..."
 	if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = "obtener enlace de descarga..."}
 	http.open("GET", dUrl);
@@ -122,35 +99,6 @@ function cook() {
 	alert("By continuing to use this site, you consent to Taylor storing cookies in your computer. These are just to save your settings and we store no personal information.");
 	localStorage.setItem("cookie", "consented!")
 }
-
-function save() {
-	document.getElementById("deets").innerHTML = "saving your settings..."
-	document.getElementById("loading").style.display = 'block'
-	localStorage.setItem("lang", document.getElementById("lang").value)
-	localStorage.setItem("theme", document.getElementById("theme").value)
-	document.getElementById("deets").innerHTML = ""
-	document.getElementById("loading").style.display = 'none'
-	document.getElementById("settings").style.display = 'none'
-	location.reload();
-}
-
-function applySettings() {
-	document.getElementById("deets").innerHTML = "applying settings..."
-	document.getElementById("loading").style.display = "block";
-	if (localStorage.getItem("lang") === "en") {document.getElementById("lang").value = "en"}
-	if (localStorage.getItem("theme") === "T1") {document.getElementById("theme").value = "T1";}
-	if (localStorage.getItem("theme") === "T2") {document.getElementById("theme").value = "T2"; whiteMode();}
-	document.getElementById("loading").style.display = "none";
-}
-
-function whiteMode() {
-	document.getElementById("body").style = "background-color:white;"
-	document.getElementById("title").style = "color:black;"
-	document.getElementById("welcome").style = "color:black;"
-	document.getElementById("wel_txt").style = "color:black;"
-	document.getElementById("input_text").style = "2px none black"
-}
-
 
 function noMeta() {
 	document.getElementById("war_txt").innerHTML = "due to the way your link is formatted, we can not provide metadata for it at this time. we apologize for the inconvienice."

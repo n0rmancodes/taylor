@@ -6,7 +6,6 @@
 		<meta name="author" content="n0rmancodes">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="css/style.css" rel="stylesheet">
-		<link rel="stylesheet" href="bower_components/css-ripple-effect/dist/ripple.min.css">
 		<link rel="shortcut icon" href="ico/favicon.ico"/>
 		<meta charset="UTF-8" />
 	</head>
@@ -15,7 +14,6 @@
 			<div id="header">
 				<h1 id="title" style="font-family:Arial;">taylor</h1>
 				<p id="welcome">taylor is a high-quality, simple, ad-free youtube downloader.</p>
-				<p id="wel_txt"><a href="#" onclick="document.getElementById('settings').style.display = 'block';">settings</a> | <a href="#" onclick="legal()">legal</a></p>
 				<input id="input_text" autocomplete="off" placeholder="put in stuff"></input><button href="#" id="download" onclick="download()">download</button>
 			</div>	
 			<div id="loading">
@@ -40,18 +38,6 @@
 				<p id="war_txt"></p>
 				<div style="height:5px;"></div>
 			</div>
-			<div id="settings">
-				<div style="height:5px;"></div>
-				<i class="material-icons" style="color:white;">settings</i>
-				<p>Taylor saves your settings in your browser's cookies!</p>
-				<div style="height:3px;"></div>
-				<label>Language: </label><select id="lang"><option value="en">English</option><option value="es">Spanish (BTEA)</option></select><br>
-				<label>Theme: </label><select id="theme"><option value="T1">Default (Dark)</option><option value="T2">Light</option></select><br>
-				<div style="height:5px;"></div>
-				<button onclick="save()">save</button>
-				<div style="height:5px;"></div>
-			</div>
-			<div id="player" style="display:none;"></div>
 		</center>
 		<script src="js/index.js"></script>
 		<style id="logoColor"></style>
