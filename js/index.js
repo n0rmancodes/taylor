@@ -141,7 +141,6 @@ function save() {
 	document.getElementById("loading").style.display = 'block'
 	localStorage.setItem("lang", document.getElementById("lang").value)
 	localStorage.setItem("theme", document.getElementById("theme").value)
-	localStorage.setItem("yahoo", document.getElementById("yahoo?").value)
 	document.getElementById("deets").innerHTML = ""
 	document.getElementById("loading").style.display = 'none'
 	document.getElementById("settings").style.display = 'none'

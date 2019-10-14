@@ -24,11 +24,7 @@
 				<button id="cancel-btn" class="ripple" onclick="location.reload();" href="#">cancel</button>
 			</div>
 			<div id="downloadInfo" style="display:none;">
-				<video id="downloadPreview" controls>
-					<source id="videoSrc_mp4" type="video\mp4">
-					<source id="videoSrc_webm" type="video\webm">
-				</video>
-				<p id="downloadDeets" > <span class="material-icons">file_download</span> <b>download successful</b> | quality: <b><span id="vidQuality"></span></b> | file type: <span id="vidType"><b></b></span> | <b><a id="vidDL" download>download</a></b></p>
+				<p id="downloadDeets"> <span class="material-icons">file_download</span> <b>download successful</b> | quality: <b><span id="vidQuality"></span></b> | file type: <span id="vidType"><b></b></span> | <b><a id="vidDL" download>download</a></b></p>
 			</div>
 			<div id="error">
 				<div style="height:5px;"></div>
@@ -51,7 +47,6 @@
 				<div style="height:3px;"></div>
 				<label>Language: </label><select id="lang"><option value="en">English</option><option value="es">Spanish (BTEA)</option></select><br>
 				<label>Theme: </label><select id="theme"><option value="T1">Default (Dark)</option><option value="T2">Light</option></select><br>
-				<label>Music: </label><select id="yahoo?"><option value="n">No</option><option value="y">Yes</option></select>
 				<div style="height:5px;"></div>
 				<button onclick="save()" class="ripple">save</button>
 				<div style="height:5px;"></div>
