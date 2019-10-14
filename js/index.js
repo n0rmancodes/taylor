@@ -67,10 +67,8 @@ function download() {
 		if (!downloadLink) {invalid(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = "escribir detalles en un archivo HTML"}
-		document.getElementById("vidType").innerHTML = mType;
 		document.getElementById("vidDL").href = downloadLink;
 		document.getElementById("vidQuality").innerHTML =  quality;
-		if (mType === "mp4") {document.getElementById("videoSrc_mp4").src = downloadLink} else {document.getElementById("videoSrc_webm").src = downloadLink}
 		document.getElementById("downloadInfo").style.display = "block";
 		document.getElementById("loading").style.display = "none";
 		document.getElementById("warn").style.display = "none";
