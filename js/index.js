@@ -154,8 +154,6 @@ function applySettings() {
 	if (localStorage.getItem("lang") === "en") {document.getElementById("lang").value = "en"}
 	if (localStorage.getItem("theme") === "T1") {document.getElementById("theme").value = "T1";}
 	if (localStorage.getItem("theme") === "T2") {document.getElementById("theme").value = "T2"; whiteMode();}
-	if (localStorage.getItem("yahoo") === "y") {document.getElementById("yahoo?").value = "y"; playMusic();}
-	if (localStorage.getItem("yahoo") === "n") {document.getElementById("yahoo?").value = "n";}
 	document.getElementById("loading").style.display = "none";
 }
 
@@ -167,27 +165,6 @@ function whiteMode() {
 	document.getElementById("input_text").style = "2px none black"
 }
 
-function playMusic() {
-	document.getElementById("player").innerHTML = '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/N0y3-qHEVYU?controls=0&autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-}
-
-function boldIt() {
-	document.getElementById("title").style = "font-size:100px;"
-	var selection = [
-		"sfx/mario-herewego.WAV",
-		"sfx/mario-pullup.WAV",
-		"sfx/mario-scream.WAV",
-		"sfx/mario-woohoo.WAV",
-		"sfx/mario-yahoo.WAV"
-	]
-	var chosen = selection[Math.floor(Math.random() * selection.length)];
-	var audio = new Audio(chosen);
-	audio.play();
-}
-
-function noBold() {
-	document.getElementById("title").style = "font-size:90px;"
-}
 
 function noMeta() {
 	document.getElementById("war_txt").innerHTML = "due to the way your link is formatted, we can not provide metadata for it at this time. we apologize for the inconvienice."
