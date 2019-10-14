@@ -11,7 +11,6 @@ function toES() {
 }
 
 function download() {
-	document.getElementById("downloadPreview").pause();
 	document.title = "[DOWNLOADING...] taylor - youtube video downloader"
 	document.getElementById("downloadInfo").style.display = "none";
 	document.getElementById("error").style.display = "none";
@@ -74,8 +73,6 @@ function download() {
 		document.getElementById("warn").style.display = "none";
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
-		document.getElementById("downloadPreview").play();
-		document.getElementById("downloadPreview").currentTime-=10
 		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
 		document.getElementById("input_text").disabled = false;
  	}
@@ -115,14 +112,6 @@ function invalid() {
 	document.getElementById("deets").innerHTML = "";
 	document.getElementById("input_text").disabled = false;
 	document.title = "[ERROR] taylor - youtube video downloader"
-}
-
-function search() {
-	if (!document.getElementById("input_text").value) {document.getElementById("err_txt").innerHTML = "Please enter a search query."; document.getElementById("error").style.display = "block"; }
-	document.getElementById("deets").innerHTML = "your browser is opening the page...";
-	document.getElementById("loading").style.display = "block";
-	document.getElementById("error").style.display = "none";
-	window.open("https://youtube.com/results?search_query=" + document.getElementById("input_text").value, "_self")
 }
 
 function legal() {
