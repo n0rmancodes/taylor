@@ -32,7 +32,7 @@ function download() {
 	}
 	const http = new XMLHttpRequest();
 	document.getElementById("deets").innerHTML = "generating API request..."
-	const dUrl = "https://you-link-revived.herokuapp.com/?url=" + ytLink;
+	const dUrl = "https://ergnoiuwegoietgh.herokuapp.com/?url=" + ytLink;
 	document.getElementById("deets").innerHTML = "setting up connection..."
 	http.open("GET", dUrl);
 	document.getElementById("deets").innerHTML = "sending API request..."
@@ -70,26 +70,8 @@ function nomatch() {
 	document.title = "[ERROR] taylor - youtube video downloader"
 }
 
-function apiDown() {
-	document.getElementById("err_txt").innerHTML = "the api seems to be down right now. please report this to @SomeCallMeNorm on twitter."
-	document.getElementById("error").style.display = "block";
-	document.getElementById("deets").innerHTML = "";
-	document.getElementById("loading").style.display = 'none';
-	document.getElementById("input_text").disabled = false;
-	document.title = "[ERROR] taylor - youtube video downloader"
-}
-
-function apiDown2() {
-	document.getElementById("err_txt").innerHTML = "the API doesn't seem to be working at the moment. please report this to @SomeCallMeNorm on twitter and in the meantime, use <a href='https://youtubemp4.site/?url=" + document.getElementById("input_text").value + "'>this alternative</a>."
-	document.getElementById("error").style.display = "block";
-	document.getElementById("deets").innerHTML = "";
-	document.getElementById("loading").style.display = 'none';
-	document.getElementById("input_text").disabled = false;
-	document.title = "[ERROR] taylor - youtube video downloader"
-}
-
 function invalid() {
-	document.getElementById("err_txt").innerHTML = "this link for one reason or another (likely copyright issues) could not be downloaded. another possibility is that the API could be down."
+	document.getElementById("err_txt").innerHTML = "this link for one reason or another (likely copyright issues) could not be downloaded. another possibility is that the API could be down or being blocked by youtube."
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
 	document.getElementById("deets").innerHTML = "";
