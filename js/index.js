@@ -45,13 +45,14 @@ function download() {
 		if (!downloadLink) {invalid(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
-		document.getElementById("vidQuality").innerHTML =  quality;
+		document.getElementById("vidQuality").innerHTML = quality;
+		document.getElementById("fileType").innerHTML = mType;
 		document.getElementById("downloadInfo").style.display = "block";
 		document.getElementById("loading").style.display = "none";
 		document.getElementById("warn").style.display = "none";
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
-		document.getElementById("video").innerHTML = '<source src="' + downloadLink + '" type="' + type + '">'
+		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>"
 		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
 		document.getElementById("input_text").disabled = false;
  	}
