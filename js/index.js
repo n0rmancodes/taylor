@@ -19,6 +19,7 @@ function download() {
 			return;
 		}
 	}
+
 	if (ytLink.includes("https://youtu.be/")) {
 		var yID = document.getElementById("input_text").value.substring(17,28);
 		var ytLink = "https://youtube.com/watch?v=" + yID;
@@ -40,6 +41,7 @@ function download() {
 		var downloadLink = JSONData[0].url;
 		var quality = JSONData[0].qualityLabel;
 		var mType = JSONData[0].mimeType;
+		var type = JSONData[0].type;
 		if (!downloadLink) {invalid(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
@@ -49,6 +51,7 @@ function download() {
 		document.getElementById("warn").style.display = "none";
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
+		document.getElementById("video").innerHTML = '<source src="' + downloadLink + '" type="' + type + '">'
 		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
 		document.getElementById("input_text").disabled = false;
  	}

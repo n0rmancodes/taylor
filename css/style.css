@@ -36,6 +36,11 @@ input {
 	padding-right: 82px;
 }
 
+video {
+	width: 640px;
+	height: 360px;
+}
+
 img {
 	width: 113px;
 	height: 113px;
@@ -120,11 +125,6 @@ a:visited {
 
 #wel_txt {
 	font-size:12px;
-}
-
-#vidThumb {
-	width: 400px;
-	height: 240px;
 }
 
 .spacer {
