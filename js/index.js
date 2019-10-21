@@ -1,3 +1,7 @@
+if (e.keyCode == 13) {
+	download();
+} 
+
 function download() {
 	document.title = "[DOWNLOADING...] taylor - youtube video downloader"
 	document.getElementById("downloadInfo").style.display = "none";
