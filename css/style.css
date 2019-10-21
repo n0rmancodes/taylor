@@ -9,7 +9,7 @@ body {
 button {
 	border-radius: 12px;
 	border: 0px;
-	height: 22px;
+	height: 30px;
 }
 
 h1 {
@@ -28,12 +28,12 @@ h1 {
 
 input {
 	font-family: Verdana;
-	width: 335px;
+	width: 345px;
 	border-radius: 12px;
 	border: 0px;
-	height: 22px;
+	height: 35px;
 	padding-left: 5px;
-	padding-right: 5px;
+	padding-right: 82px;
 }
 
 img {
@@ -50,24 +50,9 @@ a:visited {
 	color: blue;
 }
 
-label {
-	font-family:Arial;
-	color:white;
-}
-
-video {
-	width:800px;
-	height:450px;
-}
-
 #download {
 	background-image: linear-gradient(to right, #46FB85 , #00D7FF);
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
-#search {
-	background-image: linear-gradient(to right, #00D7FF , #978AF2);
+	margin-left: -75px;
 }
 
 #ajaxloader {
@@ -76,7 +61,6 @@ video {
 	border: 8px solid #fff;
 	border-right-color: transparent;
 	border-radius: 50%;
-	box-shadow: 0 0 5px 2px #eee;
 	animation: spin 1s cubic-bezier(.46,.03,.52,.96) infinite;
 }
 
@@ -141,4 +125,19 @@ video {
 #vidThumb {
 	width: 400px;
 	height: 240px;
+}
+
+.spacer {
+	width:1px;
+	height:10px;
+}
+
+.check {
+	font-size:72px;
+	width:72px;
+	height:72px;
+}
+
+#footer {
+	font-size:13px;
 }

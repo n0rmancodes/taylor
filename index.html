@@ -16,12 +16,14 @@
 				<p id="welcome">taylor is a high-quality, simple, ad-free youtube downloader.</p>
 				<input id="input_text" autocomplete="off" placeholder="put in stuff"></input><button href="#" id="download" onclick="download()">download</button>
 			</div>	
+			<div class="spacer"></div>
 			<div id="loading">
 				<div id="ajaxloader"></div>
 				<p id="deets"></p>
 				<button id="cancel-btn" class="ripple" onclick="location.reload();" href="#">cancel</button>
 			</div>
 			<div id="downloadInfo" style="display:none;">
+				<h1 class="material-icons check">check</h1>
 				<p id="downloadDeets"> <span class="material-icons">file_download</span> <b>download successful</b> | quality: <b><span id="vidQuality"></span></b> | <b><a id="vidDL" download>download</a></b></p>
 			</div>
 			<div id="error">
@@ -38,6 +40,7 @@
 				<p id="war_txt"></p>
 				<div style="height:5px;"></div>
 			</div>
+			<p id="footer">please use this service only as to archive your favorite content and not to reupload other's content without proper credit. <b>non-embeddable videos do not work with this service.</b></p>
 		</center>
 		<script src="js/index.js"></script>
 		<style id="logoColor"></style>

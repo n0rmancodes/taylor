@@ -1,21 +1,8 @@
-if (!localStorage.getItem("cookie")) {cook()}
-applySettings();
-if (localStorage.getItem('lang') === 'es') {toES()}
-
-
-function toES() {
-	document.getElementById("input_text").placeholder = "ingresar información"
-	document.getElementById("download").innerHTML = "descargar"
-	document.getElementById("search").innerHTML = "buscar"
-	document.getElementById("welcome").innerHTML = "taylor es un descargador de youtube de alta calidad, simple y sin publicidad."
-}
-
 function download() {
 	document.title = "[DOWNLOADING...] taylor - youtube video downloader"
 	document.getElementById("downloadInfo").style.display = "none";
 	document.getElementById("error").style.display = "none";
 	document.getElementById("deets").innerHTML = "checking link..."
-	if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = "comprobando enlace..."}
 	document.getElementById("loading").style.display = "block"
 	document.getElementById("input_text").disabled = true;
 	var ytLink = document.getElementById("input_text").value
@@ -28,21 +15,26 @@ function download() {
 	if (ytLink.includes("https://youtu.be/")) {
 		var yID = document.getElementById("input_text").value.substring(17,28);
 		var ytLink = "https://youtube.com/watch?v=" + yID;
+	} 
+	if (!yID) {
+		var yID = document.getElementById("input_text").value.substring(32,43);
 	}
 	const http = new XMLHttpRequest();
+	document.getElementById("deets").innerHTML = "generating API request..."
 	const dUrl = "https://you-link-revived.herokuapp.com/?url=" + ytLink;
-	document.getElementById("deets").innerHTML = "getting download link..."
-	if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = "obtener enlace de descarga..."}
+	document.getElementById("deets").innerHTML = "setting up connection..."
 	http.open("GET", dUrl);
+	document.getElementById("deets").innerHTML = "sending API request..."
 	http.send();
+	document.getElementById("deets").innerHTML = "recieving API data..."
 	http.onreadystatechange=(e)=>{
+		document.getElementById("deets").innerHTML = "parsing API data..."
 		var JSONData = JSON.parse(http.responseText);
 		var downloadLink = JSONData[0].url;
 		var quality = JSONData[0].qualityLabel;
 		var mType = JSONData[0].mimeType;
 		if (!downloadLink) {invalid(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
-		if (localStorage.getItem('lang') === 'es') {document.getElementById("deets").innerHTML = "escribir detalles en un archivo HTML"}
 		document.getElementById("vidDL").href = downloadLink;
 		document.getElementById("vidQuality").innerHTML =  quality;
 		document.getElementById("downloadInfo").style.display = "block";
@@ -89,10 +81,6 @@ function invalid() {
 	document.getElementById("deets").innerHTML = "";
 	document.getElementById("input_text").disabled = false;
 	document.title = "[ERROR] taylor - youtube video downloader"
-}
-
-function legal() {
-	alert("Taylor is not responsible for any legal repercussions facing for using Taylor. The download API we use blocks out copyrighted content. Some may still seep through, however.")
 }
 
 function cook() {
