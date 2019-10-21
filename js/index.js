@@ -1,6 +1,9 @@
-if (e.keyCode == 13) {
-	download();
-} 
+
+s.addEventListener("keydown", function (e) {
+	if (e.keyCode == 13) {
+		download();
+	} 
+});
 
 function download() {
 	document.title = "[DOWNLOADING...] taylor - youtube video downloader"
