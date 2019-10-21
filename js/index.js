@@ -1,11 +1,14 @@
+var d = document.getElementById("input_text")
 
-s.addEventListener("keydown", function (e) {
+d.addEventListener("keydown", function (e) {
 	if (e.keyCode == 13) {
 		download();
 	} 
 });
 
 function download() {
+	document.getElementById("video").pause();
+	document.getElementById("video").innerHTML = ""
 	document.title = "[DOWNLOADING...] taylor - youtube video downloader"
 	document.getElementById("downloadInfo").style.display = "none";
 	document.getElementById("error").style.display = "none";
@@ -47,12 +50,12 @@ function download() {
 		document.getElementById("vidDL").href = downloadLink;
 		document.getElementById("vidQuality").innerHTML = quality;
 		document.getElementById("fileType").innerHTML = mType;
+		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>"
 		document.getElementById("downloadInfo").style.display = "block";
 		document.getElementById("loading").style.display = "none";
 		document.getElementById("warn").style.display = "none";
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
-		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>"
 		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
 		document.getElementById("input_text").disabled = false;
  	}
