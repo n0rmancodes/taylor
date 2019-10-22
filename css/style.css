@@ -37,8 +37,10 @@ input {
 }
 
 video {
-	width: 432px;
-	height: 244px;
+	width:auto;
+	height:auto;
+	max-width: 640px;
+	max-height: 360px;
 	margin-bottom:5px;
 }
 
