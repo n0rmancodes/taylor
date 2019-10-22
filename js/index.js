@@ -18,11 +18,10 @@ function download() {
 	var ytLink = document.getElementById("input_text").value
 	if(!ytLink.includes("https://youtu")) {
 		if(!ytLink.includes("https://www.youtu")){
-			nomatch()
+			nomatch();
 			return;
 		}
 	}
-
 	if (ytLink.includes("https://youtu.be/")) {
 		var yID = document.getElementById("input_text").value.substring(17,28);
 		var ytLink = "https://youtube.com/watch?v=" + yID;
@@ -45,6 +44,37 @@ function download() {
 		var quality = JSONData[0].qualityLabel;
 		var mType = JSONData[0].mimeType;
 		var type = JSONData[0].type;
+		if (!downloadLink) {dl2(); console.log("no link found; trying a new API");}
+		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
+		document.getElementById("vidDL").href = downloadLink;
+		document.getElementById("vidQuality").innerHTML = quality;
+		document.getElementById("fileType").innerHTML = mType;
+		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>"
+		document.getElementById("downloadInfo").style.display = "block";
+		document.getElementById("loading").style.display = "none";
+		document.getElementById("warn").style.display = "none";
+		document.getElementById("error").style.display = "none";
+		document.getElementById("deets").innerHTML = "process complete!"
+		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
+
+ 	}
+}
+
+function dl2() {
+	const http = new XMLHttpRequest();
+	var ytLink = document.getElementById("input_text").value
+	const dUrl2 = "https://rhryhntyjntytyjr66tuyjtyuj.herokuapp.com/?url=" + ytLink;
+	http.open("GET", dUrl2);
+	document.getElementById("deets").innerHTML = "no link avaliable, trying another API (1/2)"
+	http.send();
+	document.getElementById("deets").innerHTML = "no link avaliable, trying another API (2/2)"
+	http.onreadystatechange=(e)=>{
+		document.getElementById("deets").innerHTML = "parsing API data..."
+		var JSONData = JSON.parse(http.responseText);
+		var downloadLink = JSONData[0].url;
+		var quality = JSONData[0].qualityLabel;
+		var mType = JSONData[0].mimeType;
+		var type = JSONData[0].type;
 		if (!downloadLink) {invalid(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
@@ -57,7 +87,6 @@ function download() {
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
 		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
-		document.getElementById("input_text").disabled = false;
  	}
 }
 
@@ -66,8 +95,8 @@ function nomatch() {
 	document.getElementById("error").style.display = "block";
 	document.getElementById("deets").innerHTML = "";
 	document.getElementById("loading").style.display = 'none';
-	document.getElementById("input_text").disabled = false;
 	document.title = "[ERROR] taylor - youtube video downloader"
+	document.getElementById("input_text").disabled = false;
 }
 
 function invalid() {
@@ -75,8 +104,8 @@ function invalid() {
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
 	document.getElementById("deets").innerHTML = "";
-	document.getElementById("input_text").disabled = false;
 	document.title = "[ERROR] taylor - youtube video downloader"
+	document.getElementById("input_text").disabled = false;
 }
 
 function cook() {
