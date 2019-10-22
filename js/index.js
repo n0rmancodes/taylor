@@ -108,11 +108,6 @@ function invalid() {
 	document.getElementById("input_text").disabled = false;
 }
 
-function cook() {
-	alert("By continuing to use this site, you consent to Taylor storing cookies in your computer. These are just to save your settings and we store no personal information.");
-	localStorage.setItem("cookie", "consented!")
-}
-
 function noMeta() {
 	document.getElementById("war_txt").innerHTML = "due to the way your link is formatted, we can not provide metadata for it at this time. we apologize for the inconvienice."
 	document.getElementById("warn").style.display = "block";
