@@ -1,4 +1,5 @@
 var d = document.getElementById("input_text")
+d.focus();
 
 d.addEventListener("keydown", function (e) {
 	if (e.keyCode == 13) {
@@ -9,9 +10,11 @@ d.addEventListener("keydown", function (e) {
 function download() {
 	document.getElementById("video").pause();
 	document.getElementById("video").innerHTML = ""
-	document.title = "[DOWNLOADING...] taylor - youtube video downloader"
+	document.title = "[DOWNLOADING...] taylor - youtube video downloader";
 	document.getElementById("downloadInfo").style.display = "none";
 	document.getElementById("error").style.display = "none";
+	document.getElementById("input_text").style.display = "none";
+	document.getElementById("download").style.display = "none";
 	document.getElementById("deets").innerHTML = "checking link..."
 	document.getElementById("loading").style.display = "block"
 	document.getElementById("input_text").disabled = true;
@@ -44,7 +47,7 @@ function download() {
 		var quality = JSONData[0].qualityLabel;
 		var mType = JSONData[0].mimeType;
 		var type = JSONData[0].type;
-		if (!downloadLink) {dl2(); console.log("no link found; trying a new API");}
+		if (!downloadLink) {dl2(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
 		document.getElementById("vidQuality").innerHTML = quality;
@@ -55,7 +58,7 @@ function download() {
 		document.getElementById("warn").style.display = "none";
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
-		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
+		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader";
 
  	}
 }
@@ -78,6 +81,8 @@ function dl2() {
 		if (!downloadLink) {invalid(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
+		document.getElementById("input_text").style.display = "none";
+		document.getElementById("download").style.display = "none";
 		document.getElementById("vidQuality").innerHTML = quality;
 		document.getElementById("fileType").innerHTML = mType;
 		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>"
@@ -86,55 +91,34 @@ function dl2() {
 		document.getElementById("warn").style.display = "none";
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
-		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader"
+		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader";
  	}
 }
 
 function nomatch() {
+	document.getElementById("input_text").value = "";
+	document.getElementById("input_text").placeholder = "try a new link";
+	document.getElementById("input_text").focus();
 	document.getElementById("err_txt").innerHTML = "the link must be a secure youtube link";
 	document.getElementById("error").style.display = "block";
 	document.getElementById("deets").innerHTML = "";
+	document.getElementById("input_text").style.display = "";
+	document.getElementById("download").style.display = "";
 	document.getElementById("loading").style.display = 'none';
-	document.title = "[ERROR] taylor - youtube video downloader"
+	document.title = "[ERROR] taylor - youtube video downloader";
 	document.getElementById("input_text").disabled = false;
 }
 
 function invalid() {
+	document.getElementById("input_text").value = "";
+	document.getElementById("input_text").placeholder = "try a new link";
+	document.getElementById("input_text").focus();
+	document.getElementById("input_text").style.display = "";
+	document.getElementById("download").style.display = "";
 	document.getElementById("err_txt").innerHTML = "this link for one reason or another (likely copyright issues) could not be downloaded. another possibility is that the API could be down or being blocked by youtube."
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
 	document.getElementById("deets").innerHTML = "";
-	document.title = "[ERROR] taylor - youtube video downloader"
+	document.title = "[ERROR] taylor - youtube video downloader";
 	document.getElementById("input_text").disabled = false;
-}
-
-function noMeta() {
-	document.getElementById("war_txt").innerHTML = "due to the way your link is formatted, we can not provide metadata for it at this time. we apologize for the inconvienice."
-	document.getElementById("warn").style.display = "block";
-	document.getElementById("deets").innerHTML = "";
-	document.getElementById("loading").style.display = 'none';
-	document.getElementById("input_text").disabled = false;
-	setTimeout(function () {
-		document.getElementById("warn").style.display = 'none'
-		getLink();
-		document.getElementById("loading").style.display = 'block';
-		document.getElementById("vidMeta").style.display = "none";
-	}, 5000);
-	document.title = "[ERROR] taylor - youtube video downloader"
-	
-}
-
-function noMeta2() {
-	document.getElementById("war_txt").innerHTML = "due to the metadata API seeming to be down, we can not provide metadata for it at this time. we apologize for the inconvienice."
-	document.getElementById("warn").style.display = "block";
-	document.getElementById("deets").innerHTML = "";
-	document.getElementById("loading").style.display = 'none';
-	document.getElementById("input_text").disabled = false;
-	setTimeout(function () {
-		document.getElementById("warn").style.display = 'none'
-		getLink();
-		document.getElementById("loading").style.display = 'block';
-		document.getElementById("vidMeta").style.display = "none";
-	}, 5000);
-	document.title = "[ERROR] taylor - youtube video downloader"
 }
