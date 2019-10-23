@@ -10,6 +10,15 @@ button {
 	border-radius: 12px;
 	border: 0px;
 	height: 30px;
+	background-color: #f0f0f0;
+	-webkit-transition: background-color .5s; /* Safari prior 6.1 */
+	transition: background-color .5s;
+	color:black;
+}
+
+button:hover {
+	background-color: black;
+	color:white;
 }
 
 h1 {
@@ -21,6 +30,7 @@ h1 {
 	margin: 0;
 	padding: 0;
 	-webkit-transition: font-size .5s; /* Safari prior 6.1 */
+	transition: font-size .5s;
 	width:275px;
 	height:115px;
 	transition: font-size .5s;
@@ -45,8 +55,9 @@ video {
 }
 
 img {
-	width: 113px;
-	height: 113px;
+	width: auto;
+	height: auto;
+	max-width:100px;
 }
 
 p {

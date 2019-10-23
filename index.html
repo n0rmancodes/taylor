@@ -12,7 +12,7 @@
 	<body id="body">
 		<center>
 			<div id="header">
-				<h1 id="title" style="font-family:Arial;">taylor</h1>
+				<h1 id="title" style="font-family:Arial;">taylor</h1><img id="tay" src="img/tay.png">
 				<p id="welcome">taylor is a high-quality, simple, ad-free youtube downloader.</p>
 				<input id="input_text" autocomplete="off" placeholder="https://www.youtube.com/watch?v=HmZKgaHa3Fg"></input><button href="#" id="download" onclick="download()">download</button>
 			</div>	
@@ -25,8 +25,8 @@
 			<div id="downloadInfo" style="display:none;">
 				<h1 class="material-icons check"><b>check</b></h1>
 				<p id="downloadDeets"><span style="font-size:18px;" class="material-icons">file_download</span> <b>download successful</b> | quality: <b><span id="vidQuality"></span></b> | file type: <b><span id="fileType"></span></b></p>
-				<video id="video" controls></video>
-				<div id="footer">
+				<video id="video" controls preload="none"></video>
+				<div id="buttons">
 					<a id="vidDL"><button>download this video <span style="font-size:12px;" class="material-icons">file_download</span></button></a>
 					<button onclick="location.reload();">start a new download <span style="font-size:12px;" class="material-icons">refresh</span></button>
 				</div>
@@ -45,7 +45,13 @@
 				<p id="war_txt"></p>
 				<div style="height:5px;"></div>
 			</div>
-			<p id="footer">please use this service only as to archive your favorite content and not to reupload other's content without proper credit. <b>non-embeddable videos and videos that are blocked in the US do not work with this service.</b></p>
+			<div id="footerDiv" style="margin-top:10px;">
+				<button id='showButton' onclick="document.getElementById('info').style.display = ''; document.getElementById('hideButton').style.display = ''; document.getElementById('showButton').style.display = 'none';">show info</button>
+				<button style="display:none;" id='hideButton' onclick="document.getElementById('info').style.display = 'none'; document.getElementById('hideButton').style.display = 'none'; document.getElementById('showButton').style.display = '';">hide info</button>
+				<p id="info" style="display:none;">please use this service only as to archive your favorite content and not to reupload other's content without proper credit. <b>non-embeddable videos and videos that are blocked in the US do not work with this service.</b>
+				<br><br>image credit: eva rinaldi [<a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>]
+				<br><br>this service is not officially endorsed/owned by taylor swift or any similar entity and uses a public image of her.</p>
+			</div>
 		</center>
 		<script src="js/index.js"></script>
 		<style id="logoColor"></style>
