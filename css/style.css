@@ -11,8 +11,8 @@ button {
 	border: 0px;
 	height: 30px;
 	background-color: #f0f0f0;
-	-webkit-transition: background-color .5s; /* Safari prior 6.1 */
-	transition: background-color .5s;
+	-webkit-transition: background-color .5s, color .5s; /* Safari prior 6.1 */
+	transition: background-color .5s, color .5s;
 	color:black;
 }
 
@@ -154,4 +154,8 @@ a:visited {
 
 #footer {
 	font-size:13px;
+}
+
+#redirecting {
+	display:none;
 }

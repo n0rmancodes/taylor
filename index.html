@@ -25,9 +25,9 @@
 			<div id="downloadInfo" style="display:none;">
 				<h1 class="material-icons check"><b>check</b></h1>
 				<p id="downloadDeets"><span style="font-size:18px;" class="material-icons">file_download</span> <b>download successful</b> | quality: <b><span id="vidQuality"></span></b> | file type: <b><span id="fileType"></span></b></p>
-				<video id="video" controls preload="none"></video>
+				<video id="video" controls></video>
 				<div id="buttons">
-					<a id="vidDL"><button>download this video <span style="font-size:12px;" class="material-icons">file_download</span></button></a>
+					<a id="vidDL" onclick="redir();"><button>download this video <span style="font-size:12px;" class="material-icons">file_download</span></button></a>
 					<button onclick="location.reload();">start a new download <span style="font-size:12px;" class="material-icons">refresh</span></button>
 				</div>
 			</div>
@@ -44,6 +44,10 @@
 				<div style="height:3px;"></div>
 				<p id="war_txt"></p>
 				<div style="height:5px;"></div>
+			</div>
+			<div id="redirecting">
+				<div id="ajaxloader"></div>
+				<p>we are taking you to your download!<br>please wait for your browser to load.</p>
 			</div>
 			<div id="footerDiv" style="margin-top:10px;">
 				<button id='showButton' onclick="document.getElementById('info').style.display = ''; document.getElementById('hideButton').style.display = ''; document.getElementById('showButton').style.display = 'none';">show info</button>

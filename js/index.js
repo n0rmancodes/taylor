@@ -124,3 +124,11 @@ function invalid() {
 	document.title = "[ERROR] taylor - youtube video downloader";
 	document.getElementById("input_text").disabled = false;
 }
+
+function redir() {
+	document.getElementById("redirecting").style.display = 'block';
+	document.getElementById("downloadInfo").style.display = 'none';
+	document.getElementById("error").style.display = "none";
+	document.getElementById("input_text").style.display = "none";
+	document.getElementById("download").style.display = "none";
+}
