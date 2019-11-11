@@ -34,7 +34,7 @@ function download() {
 	}
 	const http = new XMLHttpRequest();
 	document.getElementById("deets").innerHTML = "generating API request..."
-	const dUrl = "https://ergnoiuwegoietgh.herokuapp.com/?url=" + ytLink;
+	const dUrl = "https://rhryhntyjntytyjr66tuyjtyuj.herokuapp.com/?url=" + ytLink;
 	document.getElementById("deets").innerHTML = "setting up connection..."
 	http.open("GET", dUrl);
 	document.getElementById("deets").innerHTML = "sending API request..."
@@ -67,7 +67,7 @@ function download() {
 function dl2() {
 	const http = new XMLHttpRequest();
 	var ytLink = document.getElementById("input_text").value
-	const dUrl2 = "https://rhryhntyjntytyjr66tuyjtyuj.herokuapp.com/?url=" + ytLink;
+	const dUrl2 = "https://vbdfgnaodgnboir.herokuapp.com/?url=" + ytLink;
 	http.open("GET", dUrl2);
 	document.getElementById("deets").innerHTML = "no link avaliable, trying another API (1/2)"
 	http.send();
