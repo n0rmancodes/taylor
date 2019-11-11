@@ -87,6 +87,20 @@ function dl2() {
 		document.getElementById("vidQuality").innerHTML = quality;
 		document.getElementById("fileType").innerHTML = mType;
 		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>"
+		var ytLink = document.getElementById("input_text").value
+		if(!ytLink.includes("https://youtu")) {
+			if(!ytLink.includes("https://www.youtu")){
+				nomatch();
+				return;
+			}
+		}
+		if (ytLink.includes("https://youtu.be/")) {
+			var yID = document.getElementById("input_text").value.substring(17,28);
+			var ytLink = "https://youtube.com/watch?v=" + yID;
+		} 
+		if (!yID) {
+			var yID = document.getElementById("input_text").value.substring(32,43);
+		}
 		document.getElementById("video").poster = "http://i3.ytimg.com/vi/" + yID + "/maxresdefault.jpg"
 		document.getElementById("downloadInfo").style.display = "block";
 		document.getElementById("loading").style.display = "none";
