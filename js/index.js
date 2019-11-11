@@ -66,7 +66,6 @@ function download() {
 
 function dl2() {
 	const http = new XMLHttpRequest();
-	var ytLink = document.getElementById("input_text").value
 	const dUrl2 = "https://vbdfgnaodgnboir.herokuapp.com/?url=" + ytLink;
 	http.open("GET", dUrl2);
 	document.getElementById("deets").innerHTML = "no link avaliable, trying another API (1/2)"
