@@ -34,7 +34,7 @@ function download() {
 	}
 	const http = new XMLHttpRequest();
 	document.getElementById("deets").innerHTML = "generating API request..."
-	const dUrl = "https://rhryhntyjntytyjr66tuyjtyuj.herokuapp.com/?url=" + ytLink;
+	const dUrl = "https://taylorbackend.herokuapp.com/?url=" + ytLink;
 	document.getElementById("deets").innerHTML = "setting up connection..."
 	http.open("GET", dUrl);
 	document.getElementById("deets").innerHTML = "sending API request..."
@@ -43,10 +43,10 @@ function download() {
 	http.onreadystatechange=(e)=>{
 		document.getElementById("deets").innerHTML = "parsing API data..."
 		var JSONData = JSON.parse(http.responseText);
-		var downloadLink = JSONData[0].url;
-		var quality = JSONData[0].qualityLabel;
-		var mType = JSONData[0].mimeType;
-		var type = JSONData[0].type;
+		var downloadLink = JSONData.datainfo[0].url;
+		var quality = JSONData.datainfo[0].resolution;
+		var mType = JSONData.datainfo[0].container;
+		var type = JSONData.datainfo[0].type;
 		if (!downloadLink) {dl2(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
