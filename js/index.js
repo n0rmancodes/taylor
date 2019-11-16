@@ -43,15 +43,22 @@ function download() {
 	http.onreadystatechange=(e)=>{
 		document.getElementById("deets").innerHTML = "parsing API data..."
 		var JSONData = JSON.parse(http.responseText);
+		
+		if (JSONData.datainfo[0].live === true | JSONData.datainfo[0].isHLS === true | JSONData.datainfo[0].isDashMPD === true ) {
+			isLive();
+			return;
+		}
 		var downloadLink = JSONData.datainfo[0].url;
 		var quality = JSONData.datainfo[0].resolution;
 		var mType = JSONData.datainfo[0].container;
 		var type = JSONData.datainfo[0].type;
+		var audioBitrate = JSONData.datainfo[0].audioBitrate;
 		if (!downloadLink) {dl2(); return;}
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
 		document.getElementById("vidQuality").innerHTML = quality;
 		document.getElementById("fileType").innerHTML = mType;
+		document.getElementById("audioBitrate").innerHTML = audioBitrate;
 		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>";
 		document.getElementById("video").poster = "http://i3.ytimg.com/vi/" + yID + "/maxresdefault.jpg"
 		document.getElementById("downloadInfo").style.display = "block";
@@ -60,11 +67,18 @@ function download() {
 		document.getElementById("error").style.display = "none";
 		document.getElementById("deets").innerHTML = "process complete!"
 		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader";
-
  	}
+	http.onerror = function() {
+		dl2();
+	}
 }
 
 function dl2() {
+	var ytLink = document.getElementById("input_text").value;
+	if (ytLink.includes("https://youtu.be/")) {
+		var yID = document.getElementById("input_text").value.substring(17,28);
+		var ytLink = "https://youtube.com/watch?v=" + yID;
+	} 
 	const http = new XMLHttpRequest();
 	const dUrl2 = "https://vbdfgnaodgnboir.herokuapp.com/?url=" + ytLink;
 	http.open("GET", dUrl2);
@@ -73,6 +87,7 @@ function dl2() {
 	document.getElementById("deets").innerHTML = "no link avaliable, trying another API (2/2)"
 	http.onreadystatechange=(e)=>{
 		document.getElementById("deets").innerHTML = "parsing API data..."
+		document.getElementById("audioBitrateBox").style.display = 'none';
 		var JSONData = JSON.parse(http.responseText);
 		var downloadLink = JSONData[0].url;
 		var quality = JSONData[0].qualityLabel;
@@ -137,6 +152,35 @@ function invalid() {
 	document.title = "[ERROR] taylor - youtube video downloader";
 	document.getElementById("input_text").disabled = false;
 }
+
+function isLive() {
+	document.getElementById("input_text").value = "";
+	document.getElementById("input_text").placeholder = "try a new link";
+	document.getElementById("input_text").focus();
+	document.getElementById("input_text").style.display = "";
+	document.getElementById("download").style.display = "";
+	document.getElementById("err_txt").innerHTML = "it appears that this is a live video. live videos cannot be downloaded with taylor."
+	document.getElementById("loading").style.display = 'none';
+	document.getElementById("error").style.display = "block";
+	document.getElementById("deets").innerHTML = "";
+	document.title = "[ERROR] taylor - youtube video downloader";
+	document.getElementById("input_text").disabled = false;
+}
+
+function noSpaces() {
+	document.getElementById("input_text").value = "";
+	document.getElementById("input_text").placeholder = "try a new link";
+	document.getElementById("input_text").focus();
+	document.getElementById("input_text").style.display = "";
+	document.getElementById("download").style.display = "";
+	document.getElementById("err_txt").innerHTML = "spaces are not permitted in URLs."
+	document.getElementById("loading").style.display = 'none';
+	document.getElementById("error").style.display = "block";
+	document.getElementById("deets").innerHTML = "";
+	document.title = "[ERROR] taylor - youtube video downloader";
+	document.getElementById("input_text").disabled = false;
+}
+
 
 function redir() {
 	document.getElementById("redirecting").style.display = 'block';
