@@ -7,7 +7,7 @@ d.addEventListener("keydown", function (e) {
 	} 
 });
 
-function download() {
+function dl() {
 	document.getElementById("video").pause();
 	document.getElementById("video").innerHTML = ""
 	document.title = "[DOWNLOADING...] taylor - youtube video downloader";
