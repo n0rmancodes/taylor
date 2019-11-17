@@ -31,6 +31,18 @@
 					<button onclick="location.reload();">start a new download <span style="font-size:12px;" class="material-icons">refresh</span></button>
 				</div>
 			</div>
+			<div id="redirecting">
+				<div id="ajaxloader"></div>
+				<p>we are taking you to your download!<br>please wait for your browser to load.</p>
+			</div>
+			<div id="footerDiv" style="margin-top:10px;">
+				<button id='showButton' onclick="document.getElementById('info').style.display = ''; document.getElementById('hideButton').style.display = ''; document.getElementById('showButton').style.display = 'none';">show info</button>
+				<button style="display:none;" id='hideButton' onclick="document.getElementById('info').style.display = 'none'; document.getElementById('hideButton').style.display = 'none'; document.getElementById('showButton').style.display = '';">hide info</button>
+				<p id="info" style="display:none;">please use this service only as to archive your favorite content and not to reupload other's content without proper credit. <b>videos that are blocked in the US do not work with this service.</b>
+				<br><br>image credit: eva rinaldi [<a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>]
+				<br><br>this service is not officially endorsed/owned by taylor swift or any similar entity and uses a public image of her.</p>
+			</div>
+			<div style="height:5px;"></div>
 			<div id="error">
 				<div style="height:5px;"></div>
 				<i class="material-icons">error</i>
@@ -44,17 +56,6 @@
 				<div style="height:3px;"></div>
 				<p id="war_txt"></p>
 				<div style="height:5px;"></div>
-			</div>
-			<div id="redirecting">
-				<div id="ajaxloader"></div>
-				<p>we are taking you to your download!<br>please wait for your browser to load.</p>
-			</div>
-			<div id="footerDiv" style="margin-top:10px;">
-				<button id='showButton' onclick="document.getElementById('info').style.display = ''; document.getElementById('hideButton').style.display = ''; document.getElementById('showButton').style.display = 'none';">show info</button>
-				<button style="display:none;" id='hideButton' onclick="document.getElementById('info').style.display = 'none'; document.getElementById('hideButton').style.display = 'none'; document.getElementById('showButton').style.display = '';">hide info</button>
-				<p id="info" style="display:none;">please use this service only as to archive your favorite content and not to reupload other's content without proper credit. <b>videos that are blocked in the US do not work with this service.</b>
-				<br><br>image credit: eva rinaldi [<a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>]
-				<br><br>this service is not officially endorsed/owned by taylor swift or any similar entity and uses a public image of her.</p>
 			</div>
 		</center>
 		<script src="js/index.js"></script>

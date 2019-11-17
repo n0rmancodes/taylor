@@ -202,6 +202,7 @@ function nomatch() {
 	document.getElementById("deets").innerHTML = "";
 	document.getElementById("input_text").style.display = "";
 	document.getElementById("download").style.display = "";
+	document.getElementById("audioBtn").style.display = "";
 	document.getElementById("loading").style.display = 'none';
 	document.title = "[ERROR] taylor - youtube video downloader";
 	document.getElementById("input_text").disabled = false;
@@ -213,6 +214,7 @@ function invalid() {
 	document.getElementById("input_text").focus();
 	document.getElementById("input_text").style.display = "";
 	document.getElementById("download").style.display = "";
+	document.getElementById("audioBtn").style.display = "";
 	document.getElementById("err_txt").innerHTML = "this link for one reason or another (likely copyright issues) could not be downloaded. another possibility is that the API could be down or being blocked by youtube."
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
@@ -227,6 +229,7 @@ function isLive() {
 	document.getElementById("input_text").focus();
 	document.getElementById("input_text").style.display = "";
 	document.getElementById("download").style.display = "";
+	document.getElementById("audioBtn").style.display = "";
 	document.getElementById("err_txt").innerHTML = "it appears that this is a live video. live videos cannot be downloaded with taylor."
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
@@ -241,6 +244,7 @@ function noSpaces() {
 	document.getElementById("input_text").focus();
 	document.getElementById("input_text").style.display = "";
 	document.getElementById("download").style.display = "";
+	document.getElementById("audioBtn").style.display = "";
 	document.getElementById("err_txt").innerHTML = "spaces are not permitted in URLs."
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
@@ -255,6 +259,7 @@ function listError() {
 	document.getElementById("input_text").focus();
 	document.getElementById("input_text").style.display = "";
 	document.getElementById("download").style.display = "";
+	document.getElementById("audioBtn").style.display = "";
 	document.getElementById("err_txt").innerHTML = "playlists are not supported by taylor."
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
