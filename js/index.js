@@ -12,6 +12,7 @@ function audio() {
 	document.getElementById("download").style.display = "none";
 	document.getElementById("input_text").style.display = "none";
 	document.getElementById("audioBtn").style.display = "none";
+	document.getElementById("qBlock").style.display = "none";
 	document.getElementById("deets").innerHTML = "checking link..."
 	document.getElementById("loading").style.display = "block"
 	document.getElementById("input_text").disabled = true;
@@ -50,7 +51,6 @@ function audio() {
 			return;
 		}
 		var downloadLink = JSONData.datainfo[0].url;
-		var quality = JSONData.datainfo[0].resolution;
 		var mType = JSONData.datainfo[0].container;
 		var type = JSONData.datainfo[0].type;
 		var audioBitrate = JSONData.datainfo[0].audioBitrate;
@@ -77,6 +77,7 @@ function dl() {
 	document.getElementById("downloadInfo").style.display = "none";
 	document.getElementById("error").style.display = "none";
 	document.getElementById("input_text").style.display = "none";
+	document.getElementById("qBlock").style.display = "";	
 	document.getElementById("download").style.display = "none";
 	document.getElementById("audioBtn").style.display = "none";
 	document.getElementById("deets").innerHTML = "checking link..."
