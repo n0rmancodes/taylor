@@ -7,14 +7,11 @@ d.addEventListener("keydown", function (e) {
 	} 
 });
 
-function dl() {
-	document.getElementById("video").pause();
-	document.getElementById("video").innerHTML = ""
+function audio() {
 	document.title = "[DOWNLOADING...] taylor - youtube video downloader";
-	document.getElementById("downloadInfo").style.display = "none";
-	document.getElementById("error").style.display = "none";
-	document.getElementById("input_text").style.display = "none";
 	document.getElementById("download").style.display = "none";
+	document.getElementById("input_text").style.display = "none";
+	document.getElementById("audioBtn").style.display = "none";
 	document.getElementById("deets").innerHTML = "checking link..."
 	document.getElementById("loading").style.display = "block"
 	document.getElementById("input_text").disabled = true;
@@ -29,6 +26,77 @@ function dl() {
 		var yID = document.getElementById("input_text").value.substring(17,28);
 		var ytLink = "https://youtube.com/watch?v=" + yID;
 	} 
+	if (ytLink.includes("list=")) {
+		listError()
+		return;
+	}
+	if (!yID) {
+		var yID = document.getElementById("input_text").value.substring(32,43);
+	}
+	const http = new XMLHttpRequest();
+	document.getElementById("deets").innerHTML = "generating API request..."
+	const dUrl = "https://taylorbackend.herokuapp.com/?audio=1&url=" + ytLink;
+	document.getElementById("deets").innerHTML = "setting up connection..."
+	http.open("GET", dUrl);
+	document.getElementById("deets").innerHTML = "sending API request..."
+	http.send();
+	document.getElementById("deets").innerHTML = "recieving API data..."
+	http.onreadystatechange=(e)=>{
+		document.getElementById("deets").innerHTML = "parsing API data..."
+		var JSONData = JSON.parse(http.responseText);
+		
+		if (JSONData.datainfo[0].live === true | JSONData.datainfo[0].isHLS === true | JSONData.datainfo[0].isDashMPD === true ) {
+			isLive();
+			return;
+		}
+		var downloadLink = JSONData.datainfo[0].url;
+		var quality = JSONData.datainfo[0].resolution;
+		var mType = JSONData.datainfo[0].container;
+		var type = JSONData.datainfo[0].type;
+		var audioBitrate = JSONData.datainfo[0].audioBitrate;
+		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
+		document.getElementById("vidDL").href = downloadLink;
+		document.getElementById("vidQuality").innerHTML = quality;
+		document.getElementById("fileType").innerHTML = mType;
+		document.getElementById("audioBitrate").innerHTML = audioBitrate;
+		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>";
+		document.getElementById("video").poster = "http://i3.ytimg.com/vi/" + yID + "/maxresdefault.jpg"
+		document.getElementById("downloadInfo").style.display = "block";
+		document.getElementById("loading").style.display = "none";
+		document.getElementById("warn").style.display = "none";
+		document.getElementById("error").style.display = "none";
+		document.getElementById("deets").innerHTML = "process complete!"
+		document.title = "[DOWNLOAD COMPLETE] taylor - youtube video downloader";
+ 	}
+}
+
+function dl() {
+	document.getElementById("video").pause();
+	document.getElementById("video").innerHTML = ""
+	document.title = "[DOWNLOADING...] taylor - youtube video downloader";
+	document.getElementById("downloadInfo").style.display = "none";
+	document.getElementById("error").style.display = "none";
+	document.getElementById("input_text").style.display = "none";
+	document.getElementById("download").style.display = "none";
+	document.getElementById("audioBtn").style.display = "none";
+	document.getElementById("deets").innerHTML = "checking link..."
+	document.getElementById("loading").style.display = "block"
+	document.getElementById("input_text").disabled = true;
+	var ytLink = document.getElementById("input_text").value
+	if(!ytLink.includes("https://youtu")) {
+		if(!ytLink.includes("https://www.youtu")){
+			nomatch();
+			return;
+		}
+	}
+	if (ytLink.includes("https://youtu.be/")) {
+		var yID = document.getElementById("input_text").value.substring(17,28);
+		var ytLink = "https://youtube.com/watch?v=" + yID;
+	} 
+	if (ytLink.includes("list=")) {
+		listError()
+		return;
+	}
 	if (!yID) {
 		var yID = document.getElementById("input_text").value.substring(32,43);
 	}
@@ -174,6 +242,20 @@ function noSpaces() {
 	document.getElementById("input_text").style.display = "";
 	document.getElementById("download").style.display = "";
 	document.getElementById("err_txt").innerHTML = "spaces are not permitted in URLs."
+	document.getElementById("loading").style.display = 'none';
+	document.getElementById("error").style.display = "block";
+	document.getElementById("deets").innerHTML = "";
+	document.title = "[ERROR] taylor - youtube video downloader";
+	document.getElementById("input_text").disabled = false;
+}
+
+function listError() {
+	document.getElementById("input_text").value = "";
+	document.getElementById("input_text").placeholder = "try a new link";
+	document.getElementById("input_text").focus();
+	document.getElementById("input_text").style.display = "";
+	document.getElementById("download").style.display = "";
+	document.getElementById("err_txt").innerHTML = "playlists are not supported by taylor."
 	document.getElementById("loading").style.display = 'none';
 	document.getElementById("error").style.display = "block";
 	document.getElementById("deets").innerHTML = "";

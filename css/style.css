@@ -44,7 +44,8 @@ input {
 	border: 0px;
 	height: 35px;
 	padding-left: 5px;
-	padding-right: 82px;
+	padding-right: 5px;
+	background: linear-gradient(180deg, rgba(223,223,223,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 video {
@@ -70,10 +71,16 @@ a:visited {
 	color: blue;
 }
 
-#download {
+.download {
 	background-image: linear-gradient(to right, #46FB85 , #00D7FF);
-	margin-left: -75px;
+	margin-left: 2px;
+	height: 37px;
 }
+
+#audioBtn {
+	background: linear-gradient(90deg, rgba(0,215,255,1) 0%, rgba(115,0,255,1) 100%);
+}
+
 
 #ajaxloader {
 	width: 30px;
