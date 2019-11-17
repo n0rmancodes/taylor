@@ -56,7 +56,6 @@ function audio() {
 		var audioBitrate = JSONData.datainfo[0].audioBitrate;
 		document.getElementById('deets').innerHTML = 'writing details to HTML file...'
 		document.getElementById("vidDL").href = downloadLink;
-		document.getElementById("vidQuality").innerHTML = quality;
 		document.getElementById("fileType").innerHTML = mType;
 		document.getElementById("audioBitrate").innerHTML = audioBitrate;
 		document.getElementById("video").innerHTML = "<source src='"+ downloadLink + "' type='" + type + "'>";
