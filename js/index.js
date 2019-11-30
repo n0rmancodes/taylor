@@ -102,7 +102,7 @@ function dl() {
 	}
 	const http = new XMLHttpRequest();
 	document.getElementById("deets").innerHTML = "generating API request..."
-	const dUrl = "https://taylorbackend.herokuapp.com/?url=" + ytLink;
+	const dUrl = "https://open-ytdl-api.herokuapp.com/?url=" + ytLink;
 	document.getElementById("deets").innerHTML = "setting up connection..."
 	http.open("GET", dUrl);
 	document.getElementById("deets").innerHTML = "sending API request..."
