@@ -155,7 +155,7 @@ function dl2() {
 	document.getElementById("deets").innerHTML = "no link avaliable, trying another API (2/2)"
 	http.onreadystatechange=(e)=>{
 		document.getElementById("deets").innerHTML = "parsing API data..."
-		document.getElementById("audioBitrateBox").style.display = 'none';
+		document.getElementById("audioBitrateBlock").style.display = 'none';
 		var JSONData = JSON.parse(http.responseText);
 		var downloadLink = JSONData[0].url;
 		var quality = JSONData[0].qualityLabel;
