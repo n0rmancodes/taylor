@@ -36,7 +36,7 @@ function audio() {
 	}
 	const http = new XMLHttpRequest();
 	document.getElementById("deets").innerHTML = "generating API request..."
-	const dUrl = "https://taylorbackend.herokuapp.com/?audio=1&url=" + ytLink;
+	const dUrl = "https://open-ytdl-api.herokuapp.com/?audio=1&url=" + ytLink;
 	document.getElementById("deets").innerHTML = "setting up connection..."
 	http.open("GET", dUrl);
 	document.getElementById("deets").innerHTML = "sending API request..."
@@ -45,7 +45,6 @@ function audio() {
 	http.onreadystatechange=(e)=>{
 		document.getElementById("deets").innerHTML = "parsing API data..."
 		var JSONData = JSON.parse(http.responseText);
-		
 		if (JSONData.datainfo[0].live === true | JSONData.datainfo[0].isHLS === true | JSONData.datainfo[0].isDashMPD === true ) {
 			isLive();
 			return;
@@ -102,7 +101,7 @@ function dl() {
 	}
 	const http = new XMLHttpRequest();
 	document.getElementById("deets").innerHTML = "generating API request..."
-	const dUrl = "https://taylorbackend.herokuapp.com/?url=" + ytLink;
+	const dUrl = "https://open-ytdl-api.herokuapp.com/?url=" + ytLink;
 	document.getElementById("deets").innerHTML = "setting up connection..."
 	http.open("GET", dUrl);
 	document.getElementById("deets").innerHTML = "sending API request..."
